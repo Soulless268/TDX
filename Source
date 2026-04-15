@@ -1,0 +1,42 @@
+local players = game:GetService("Players")
+
+function checking(t, f, fallback)
+	if type(f) == t then return f end
+	return fallback
+end
+
+local queueteleport = checking("function", queue_on_teleport or (syn and syn.queue_on_teleport) or (fluxus and fluxus.queue_on_teleport))
+
+local plr = players.LocalPlayer
+local can_cross_ = true
+
+print("Running the script LLLLLLEEEEEE")
+
+plr.OnTeleport:Once(function()
+	if queueteleport and can_cross_ then
+		can_cross_ = false
+		queueteleport([[
+			local url = "https://rawscripts.net/raw/PARTY-Tower-Defense-X:-BETA-TDX-AUTO-EXPERT-70540"
+			local maxAttempts = 5
+			local delayTime = 2
+
+			for i = 1, maxAttempts do
+				local success, result = pcall(function()
+					return game:HttpGet(url)
+				end)
+
+				if success and result then
+					local func = loadstring(result)
+					if func then
+						print("debug")
+						func()
+						break
+					end
+				end
+
+				warn("Attempt "..i.." failed, retrying...")
+				task.wait(delayTime)
+			end
+		]])
+	end
+end)
