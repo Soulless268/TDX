@@ -10,13 +10,25 @@ local queueteleport = checking("function", queue_on_teleport or (syn and syn.que
 local plr = players.LocalPlayer
 local can_cross_ = true
 
-print("Running the script LLLLLLEEEEEE")
+local map = "SINGULARITY"
+local difficulty = "Expert"
+local autoAbility = false
+local macroUrl = "https://raw.githubusercontent.com/NikitosZuev/Macro-url/refs/heads/main/Expert%20by%20N"
+
+getgenv().EggHub = {
+    Map = map,
+    Difficulty = difficulty,
+    AutoAbility = autoAbility,
+    MacroUrl = macroUrl
+}
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/minh597/Egg/refs/heads/main/tdxmacro.lua"))()
 
 plr.OnTeleport:Once(function()
 	if queueteleport and can_cross_ then
 		can_cross_ = false
 		queueteleport([[
-			local url = "https://rawscripts.net/raw/PARTY-Tower-Defense-X:-BETA-TDX-AUTO-EXPERT-70540"
+			local url = "https://raw.githubusercontent.com/Soulless268/TDX/refs/heads/main/Source"
 			local maxAttempts = 5
 			local delayTime = 2
 
