@@ -1,3 +1,7 @@
+-- Date Updated -- 9:00 PM -- 17/4/2026 -- DD/MM/YYYY
+
+if not game:IsLoaded() then game.Loaded:Wait() end
+
 local players = game:GetService("Players")
 
 function checking(t, f, fallback)
